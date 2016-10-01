@@ -48,28 +48,38 @@ while notfound: # while notfound is true
 needledict = {'token': token, 'needle': index} # needle dictionary that will be used to post 
 r = requests.post('http://challenge.code2040.org/api/haystack/validate', needledict) # posting the results
 
+# Step 4:
+# This was the prefix question. I had to find all the strings in an array that did not start with a certain prefix
+# and make a new array with just those. I had to research for this one too and I found startswith which helped 
+pdict = {'token': token} # p dictionary with my token
+pfx = requests.post('http://challenge.code2040.org/api/prefix', pdict) # assigning the dictionary from the api to pfx (prefix) 
+pfx = pfx.json() 
+prefix = pfx['prefix'] # assigning the value of 'prefix' to prefix
+array = pfx['array'] # assigning the value of 'array' to array
+newArray = [] # newArray declaration
+for i in array: # for loop that searches an array 
+    if not i.startswith(prefix): # startswith can find any string that starts with whatever string you ask it to
+        newArray.append(i) # appending all the strings that don't start with the prefix to a new array 
+prefixdict = {'token': token, 'array': newArray} # dictionary with results 
+r = requests.post('http://challenge.code2040.org/api/prefix/validate', json = prefixdict) # posting the results 
 
-pdict = {'token': token}
-pfx = requests.post('http://challenge.code2040.org/api/prefix', pdict)
-pfx = pfx.json()
-prefix = pfx['prefix']
-array = pfx['array']
-newArray = []
-for i in array:
-    if not i.startswith(prefix):
-        newArray.append(i)
-prefixdict = {'token': token, 'array': newArray}
-r = requests.post('http://challenge.code2040.org/api/prefix/validate', json = prefixdict)
-
-
+# Step 5:
+# The Dating Game
+# This took me the longest and was the most difficult. It was like nothing I had ever done before, ever.
+# I had to use the datetime library which I've never even heard of let alone used and it took me a while
+# to really even understand what was going on. I finally figured out the right methods to use but it 
+# took me some time, focus, and alot of debugging. Honestly, it was kind of frustrating but I personally
+# think that sometimes it takes being uncomfortable to be able to learn and grow. Sometimes you have to be 
+# clueless to learn something new, right? 
 dgdict = {'token': token}
 tdg = requests.post('http://challenge.code2040.org/api/dating', dgdict)
 tdg = tdg.json()
 datestamp = tdg['datestamp']
 interval = tdg['interval']
-firstdatestamp = datetime.strptime(datestamp, "%Y-%m-%dT%H:%M:%SZ")
-newdatestamp = firstdatestamp + timedelta(seconds=int(interval))
-newdatestamp = newdatestamp.strftime("%Y-%m-%dT%H:%M:%SZ")
-datedict = {'token': token, 'datestamp': newdatestamp}
-r = requests.post('http://challenge.code2040.org/api/dating/validate', datedict)
+firstdatestamp = datetime.strptime(datestamp, "%Y-%m-%dT%H:%M:%SZ") # this is converting the datestamp from a string to a datetime object in the ISO 8061 format
+newdatestamp = firstdatestamp + timedelta(seconds=interval) # this is adding the interval (an int which holds seconds) to the ISO formatted datestamp. This is done with timedelta. 
+# You can't add two datetime objects (learned that the hard way haha) so you have to use timedelta instead
+newdatestamp = newdatestamp.strftime("%Y-%m-%dT%H:%M:%SZ") # this is the new date stamp, the sum, being converted back to iso form
+datedict = {'token': token, 'datestamp': newdatestamp} # dictionary with results
+r = requests.post('http://challenge.code2040.org/api/dating/validate', datedict) # posting the results
 
