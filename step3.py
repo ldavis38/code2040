@@ -23,5 +23,5 @@ while notfound: # while notfound is true
      else: # otherwise (needle is not the same as the current element)
         i = i + 1 # then i = i + 1 so that we can move on to the next index 
 needledict = {'token': token, 'needle': index} # needle dictionary that will be used to post 
-r = requests.post('http://challenge.code2040.org/api/haystack/validate', data = needledict) # posting the results
+r = requests.post('http://challenge.code2040.org/api/haystack/validate', json = needledict) # posting the results
 
