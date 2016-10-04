@@ -11,4 +11,4 @@ rdict = {'token' : token} # this is a dictionary with just one key, token (the r
 string = requests.post('http://challenge.code2040.org/api/reverse', rdict) # this is the string that the api gives 
 newstring = string.text[::-1] # reversing the string and assigning it to newstring
 reversedict = {'token': token, 'string': newstring} # dictionary with token and string needed to post    
-r = requests.post('http://challenge.code2040.org/api/reverse/validate', data = reversedict) # posting the dictionary
+r = requests.post('http://challenge.code2040.org/api/reverse/validate', json = reversedict) # posting the dictionary
