@@ -1,7 +1,7 @@
 import json, requests #importing json and requests in order to be able to post
 from datetime import datetime, timedelta #importing datetime and timedelta for the dating game
 
-# Step 1:
+# Registration:
 # This step is for registration. This honestly took me some time and research.  I had to really think about what the prompt
 # was asking me to do because while it wasn't extremely difficult or impossible, it wasn't easy or completely handed to
 # me either. I'd never worked with http requests before so it was definitely a learning experience.
