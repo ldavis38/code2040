@@ -1,6 +1,6 @@
 import json, requests #importing json and requests in order to be able to post
 from datetime import datetime, timedelta #importing datetime and timedelta for the dating game
-# Step 3:
+# Step 4:
 # This was the prefix question. I had to find all the strings in an array that did not start with a certain prefix
 # and make a new array with just those. I had to research for this one too and I found startswith which helped 
 
