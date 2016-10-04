@@ -1,7 +1,7 @@
 import json, requests #importing json and requests in order to be able to post
 from datetime import datetime, timedelta #importing datetime and timedelta for the dating game
 
-# Step 2:
+# Step 1:
 # This was the reverse a string question. This was not too difficult. At first I was going to use a while or for loop
 # but then I discovered Python's slice feature and decided to go for the shorter and more simple route. I already
 # knew slice existed but I'd forgotten about it (its been a minute since I've used Python, my current CS courses
