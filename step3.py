@@ -1,6 +1,6 @@
 import json, requests #importing json and requests in order to be able to post
 from datetime import datetime, timedelta #importing datetime and timedelta for the dating game
-# Step 2:
+# Step 3:
 # This was the needle in a haystack question. I had to find the index or position of the 'needle' in the 'haystack' array
 # (sidenote: I like the idea of finding something in an array being a needle in a haystack. pretty clever) This was not very
 # difficult either. For me, it was just a matter of using Python vs C++. I kept wanting to add semicolons, parentheses, and
