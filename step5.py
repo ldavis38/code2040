@@ -1,7 +1,7 @@
 import json, requests #importing json and requests in order to be able to post
 from datetime import datetime, timedelta #importing datetime and timedelta for the dating game
 
-# Step 5:
+# Step 4:
 # The Dating Game
 # This took me the longest and was the most difficult. It was like nothing I had ever done before, ever.
 # I had to use the datetime library which I've never even heard of let alone used and it took me a while
@@ -21,4 +21,4 @@ newdatestamp = firstdatestamp + timedelta(seconds=interval) # this is adding the
 # You can't add two datetime objects (learned that the hard way haha) so you have to use timedelta instead
 newdatestamp = newdatestamp.strftime("%Y-%m-%dT%H:%M:%SZ") # this is the new date stamp, the sum, being converted back to iso form
 datedict = {'token': token, 'datestamp': newdatestamp} # dictionary with results
-r = requests.post('http://challenge.code2040.org/api/dating/validate', datedict) # posting the results
+r = requests.post('http://challenge.code2040.org/api/dating/validate', json = datedict) # posting the results
